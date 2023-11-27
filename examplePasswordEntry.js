@@ -1,15 +1,16 @@
-const { Builder, By } = require("selenium-webdriver");
+const { By } = require("selenium-webdriver");
+const { setupDriver } = require("./web-driver");
 
 async function examplePasswordEntry(driver1) {
-  const driver = driver1
-    ? driver1
-    : await new Builder().forBrowser("chrome").build();
+  const driver = driver1 ? driver1 : await setupDriver();
 
   try {
-    await driver.get("https://ecommerce-playground.lambdatest.io");
+    await driver.get(
+      "https://ecommerce-playground.lambdatest.io/index.php?route=account/login"
+    );
 
     // Locate the password field
-    const passwordField = await driver.findElement(By.id("password"));
+    const passwordField = await driver.findElement(By.id("input-password"));
 
     // Entering a password into the password field using sendKeys()
     await passwordField.sendKeys("secretpassword");

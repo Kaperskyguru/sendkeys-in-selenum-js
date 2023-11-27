@@ -1,7 +1,8 @@
-const { Builder, By, Key } = require("selenium-webdriver");
+const { By, Key } = require("selenium-webdriver");
+const { setupDriver } = require("./web-driver");
 
 async function exampleSpecialCharacters() {
-  const driver = await new Builder().forBrowser("chrome").build();
+  const driver = await setupDriver();
 
   try {
     await driver.get("https://ecommerce-playground.lambdatest.io");

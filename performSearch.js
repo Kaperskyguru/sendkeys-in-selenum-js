@@ -1,17 +1,5 @@
-const { Builder, By, Key, until } = require("selenium-webdriver");
-const chrome = require("selenium-webdriver/chrome");
-
-async function setupDriver() {
-  const options = new chrome.Options();
-  // Add any necessary Chrome options here (if needed).
-  // Example: options.addArguments('--headless'); // Run Chrome in headless mode.
-
-  const driver = await new Builder()
-    .forBrowser("chrome")
-    .setChromeOptions(options)
-    .build();
-  return driver;
-}
+const { By, Key, until } = require("selenium-webdriver");
+const { setupDriver } = require("./web-driver");
 
 async function performSearch() {
   try {

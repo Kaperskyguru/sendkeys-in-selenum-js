@@ -1,16 +1,18 @@
-const { Builder, By } = require("selenium-webdriver");
+const { By } = require("selenium-webdriver");
 
 async function exampleClearField() {
-  const driver = await new Builder().forBrowser("chrome").build();
+  const driver = await setupDriver();
 
   try {
-    await driver.get("https://ecommerce-playground.lambdatest.io");
+    await driver.get(
+      "https://ecommerce-playground.lambdatest.io/index.php?route=account/login"
+    );
 
     // Locate the text field
-    const textField = await driver.findElement(By.id("username"));
+    const textField = await driver.findElement(By.id("input-email"));
 
     // Entering text into the text field using sendKeys()
-    await textField.sendKeys("LambdaTest");
+    await textField.sendKeys("LambdaTest@test.com");
 
     // Wait for a few seconds (optional) to observe the entered text
     await driver.sleep(2000);
